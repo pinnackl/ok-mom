@@ -1,6 +1,9 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
 /*
  * Globals
  */
@@ -22,6 +25,15 @@ a:hover {
   border: 1px solid #fff;
 }
 
+.button {
+	margin-right: 15px;
+	margin-bottom: 15px;
+}
+
+.header-title {
+	margin-bottom : 45px;
+}
+
 
 /*
  * Base structure
@@ -34,7 +46,6 @@ body {
 }
 body {
   color: #fff;
-  text-align: center;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
 
@@ -130,6 +141,10 @@ body {
   color: rgba(255,255,255,.5);
 }
 
+.mastfoot p {
+	text-align: center;
+}
+
 
 /*
  * Affix and center
@@ -161,6 +176,6 @@ body {
   .masthead,
   .mastfoot,
   .cover-container {
-    width: 700px;
+    width: 1170px;
   }
 }
