@@ -11,19 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+  <div class="form-inputs">
+    <%= f.input :title, required: true, autofocus: true %>
+    <%= f.association :child, label: 'Child', class: 'form-control'  %><br>
   </div>
-  <div class="field">
-    <%= f.label :isDone %><br>
-    <%= f.check_box :isDone %>
+  <div class="form-actions">
+    <div class="form-group">
+      <%= f.submit 'Create', class: 'button btn btn-default' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :createdAt %><br>
-    <%= f.datetime_select :createdAt %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  
 <% end %>

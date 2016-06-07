@@ -11,12 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160506093850) do
+ActiveRecord::Schema.define(version: 20160606104742) do
 
   create_table "tasks", force: :cascade do |t|
     t.string   "title"
     t.boolean  "isDone"
-    t.datetime "createdAt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "mother_id"
@@ -30,7 +29,7 @@ ActiveRecord::Schema.define(version: 20160506093850) do
     t.string   "name"
     t.string   "username"
     t.string   "email",                  default: "", null: false
-    t.string   "type"
+    t.string   "role"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "encrypted_password",     default: "", null: false

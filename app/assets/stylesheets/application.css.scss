@@ -88,6 +88,7 @@ body {
   margin-left: 20px;
 }
 .masthead-nav > li > a {
+  display: inline-block;
   padding-right: 0;
   padding-left: 0;
   font-size: 16px;
@@ -153,11 +154,15 @@ body {
 @media (min-width: 768px) {
   /* Pull out the header and footer */
   .masthead {
-    position: fixed;
+    position:fixed;
     top: 0;
   }
+.inner .cover {
+  position:relative;
+  top:0;
+}
   .mastfoot {
-    position: fixed;
+    position:relative;
     bottom: 0;
   }
   /* Start the vertical centering */
@@ -178,4 +183,8 @@ body {
   .cover-container {
     width: 1170px;
   }
+}
+
+select, input {
+  color: black;
 }

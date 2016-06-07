@@ -21,13 +21,20 @@
 </p>
 
 <p>
-  <strong>Type:</strong>
-  <%= @user.type %>
+  <strong>Role:</strong>
+  <%= @user.role %>
 </p>
 
 <p>
-  <strong>Createdat:</strong>
-  <%= @user.createdAt %>
+  <strong>Created at:</strong>
+  <%= @user.created_at %>
+</p>
+
+<p>
+  <strong>Tasks</strong>
+  <% @user.tasks.where(mother: @user).each do |task| %> 
+    <%= task.title %> 
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

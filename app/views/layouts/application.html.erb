@@ -35,10 +35,10 @@
 		              <h3 class="masthead-brand">Ok Mom</h3>
 		              <nav>
 		                <ul class="nav masthead-nav">
-		                  <li class="active"><a href="#">Home</a></li>
+		                  <li><a href="#">Home</a></li>
 		                  <li><a href="#">Tasks</a></li>
 		                  <% if user_signed_in? %>
-							  <li><i class="fa fa-user fa-2x" aria-hidden="true"></i> <%= current_user.username %></li>
+							  <li><i class="fa fa-user fa-2x" aria-hidden="true"></i> <%= link_to current_user.username, current_user %></li>
 							  <li><%= link_to 'Se déconnecter', destroy_user_session_path, method: :delete %></li>
 						  <% else %>
 							  <li><%= link_to 'Se connecter', new_user_session_path %></li>
@@ -55,7 +55,7 @@
 		            </div>
 		          </div>
 
-		          <div class="mastfoot">
+		          <div class="mastfoot col-md-12">
 		            <div class="inner">
 		              <p>Created By PinnacklTeam - Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
 		            </div>
