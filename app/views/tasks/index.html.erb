@@ -1,49 +1,68 @@
-<p id="notice"><%= notice %></p>
+<div class="container" align=center>
+  <p id="notice"><%= notice %></p>
 
-<h1>Listing Tasks</h1>
+  <h1>Listing Tasks</h1>
 
-<!-- <section class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Is done</th>
-          <th>Created at</th>
-          <th>Mother</th>
-          <th>Child</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
+  <!-- <section class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Is done</th>
+            <th>Created at</th>
+            <th>Mother</th>
+            <th>Child</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-    <tbody>
+      <tbody>
+        <% @tasks.each do |task| %>
+          <tr>
+            <td><%= task.title %></td>
+            <td><%= task.isDone %></td>
+            <td><%= task.created_at %></td>
+            <td><%= task.mother.name %></td>
+            <td><%= task.child.name %></td>
+            <td><%= link_to 'Show', task %></td>
+            <td><%= link_to 'Edit', edit_task_path(task) %></td>
+            <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section> -->
+
+  <div class="card-stack-container">
+    <div id="cardStackContainer">
       <% @tasks.each do |task| %>
-        <tr>
-          <td><%= task.title %></td>
-          <td><%= task.isDone %></td>
-          <td><%= task.created_at %></td>
-          <td><%= task.mother.name %></td>
-          <td><%= task.child.name %></td>
-          <td><%= link_to 'Show', task %></td>
-          <td><%= link_to 'Edit', edit_task_path(task) %></td>
-          <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+        <ul id="postit_<%= task.id %>" class="card-stack ui-sortable">
+          <li class="stack-label"><%= task.title %></li>
+          <li class="item"><%= task.created_at %></li>
+          <li class="item"><%= task.mother.name %></li>
+          <li class="item"><%= task.child.name %></li>
+          <br>
+          <li class="item">
+            <table class="table">
+              <tbody>
+                <td><%= link_to task, title:"Show" do %> <i class="fa fa-eye fa-2x" aria-hidden="true"></i> <% end %></td>
+                <td><%= link_to edit_task_path(task), title:"Edit" do %> <i class="fa fa-pencil fa-2x" aria-hidden="true"></i> <% end %></td>
+                <td><%= link_to task, title:"Delete", method: :delete, data: { confirm: 'Are you sure?' } do %> <i class="fa fa-trash fa-2x" aria-hidden="true"></i> <% end %></td>
+              </tbody>
+            </table>
+          </li>
+        </ul>
       <% end %>
-    </tbody>
-  </table>
-</section> -->
-
-<div class="card-stack-container">
-  <div id="cardStackContainer">
-    <% @tasks.each do |task| %>
-      <ul id="postit_<%= task.id %>" class="card-stack ui-sortable">
-        <li class="stack-label"><%= task.title %></li>
-        <li class="item"><%= task.created_at %></li>
-        <li class="item"><%= task.mother.name %></li>
-        <li class="item"><%= task.child.name %></li>
+      <ul id="postit_new" class="card-stack ui-sortable">
+        <li class="stack-label">New Task</li>
+        <%= link_to new_task_path, title:"New" do %>
+          <li class="item-new"><i class="fa fa-plus-square fa-4x" aria-hidden="true"></i></li>
+        <% end %>
       </ul>
-    <% end %>
-</div>
+    </div>
+  </div>
 
-<div class="col-md-12">
-  <%= link_to 'New Task', new_task_path %>
+  <div class="col-md-12">
+    <%= link_to 'New Task', new_task_path %>
+  </div>
 </div>

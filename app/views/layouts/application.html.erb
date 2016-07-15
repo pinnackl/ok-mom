@@ -20,6 +20,8 @@
 			<%= javascript_include_tag controller_name, media: 'all', 'data-turbolinks-track' => true %>
 		<% end %>
 
+		<!-- <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet"> -->
+
 		<%= csrf_meta_tags %>
 		</head>
 		<body>
@@ -55,7 +57,7 @@
 					            <span class="icon-bar"></span>
 					            <span class="icon-bar"></span>
 					          </button>
-					          <a class="navbar-brand" href="#">OkMom</a>
+					          <a class="navbar-brand" href="#"><span class="logo-title">OkMom</span></a>
 					        </div>
 					        <div id="navbar" class="navbar-collapse collapse">
 					          <ul class="nav navbar-nav">
@@ -94,7 +96,7 @@
 		          </div>
 
 		          <div class="inner cover">
-		          	<div class="col-md-offset-1 col-md-10">
+		          	<div class="col-sm-offset-1 col-sm-10">
 		            	<%= yield %>
 		            </div>
 		          </div>

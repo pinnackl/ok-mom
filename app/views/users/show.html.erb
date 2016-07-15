@@ -1,42 +1,79 @@
-<div class="post-it">
-<p id="notice"><%= notice %></p>
+<div class="container rotate" align=center>
+  <div class="postit">
+  <!-- <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+  <p>
+    <strong>Name:</strong>
+    <%= @user.name %>
+  </p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+  <p>
+    <strong>Username:</strong>
+    <%= @user.username %>
+  </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+  <p>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </p>
 
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
+  <p>
+    <strong>Password:</strong>
+    <%= @user.password %>
+  </p>
 
-<p>
-  <strong>Role:</strong>
-  <%= @user.role %>
-</p>
+  <p>
+    <strong>Role:</strong>
+    <%= @user.role %>
+  </p>
 
-<p>
-  <strong>Created at:</strong>
-  <%= @user.created_at %>
-</p>
+  <p>
+    <strong>Created at:</strong>
+    <%= @user.created_at %>
+  </p>
 
-<p>
-  <strong>Tasks</strong>
-  <% @user.tasks.where(mother: @user).each do |task| %> 
-    <%= task.title %> 
-  <% end %>
-</p>
+  <p>
+    <strong>Tasks</strong>
+    <% @user.tasks.where(mother: @user).each do |task| %> 
+      <%= task.title %> 
+    <% end %>
+  </p> -->
+
+    <p class="stack-label"> <b><%= @user.name %></b> </p>
+
+    <table class="table"> 
+      <caption id="notice"><%= notice %></caption>  
+      <tbody> 
+        <tr> 
+          <th scope="row">Name</th> <td><%= @user.name %></td> 
+        </tr>
+        <tr> 
+          <th scope="row">Username</th> <td><%= @user.username %></td> 
+        </tr>
+        <tr> 
+          <th scope="row">Role</th> <td><%= @user.role %></td> 
+        </tr>
+        <tr> 
+          <th scope="row">Created At</th> <td><%= @user.created_at %></td> 
+        </tr> 
+      </tbody> 
+    </table>
+
+    <div class="card-stack-container">
+      <div id="cardStackContainer">
+        <% @user.tasks.where(mother: @user).each do |task| %>
+          <ul id="postit_<%= task.id %>" class="card-stack ui-sortable">
+            <li class="stack-label"><%= task.title %></li>
+            <li class="item"><%= task.created_at %></li>
+            <li class="item"><%= task.mother.name %></li>
+            <li class="item"><%= task.child.name %></li>
+          </ul>
+        <% end %>
+    </div>
+
+    <div class="postit-footer">
+      <%= link_to 'Edit', edit_user_path(@user) %> |
+      <%= link_to 'Back', users_path %>
+    </div>
+  </div>
 </div>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
