@@ -4,7 +4,7 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-@import 'https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Pacifico|Permanent+Marker';
+@import 'https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Merienda+One|Pacifico|Permanent+Marker';
 
 /*
  * Globals
@@ -26,23 +26,24 @@ a:hover {
   background-color: #fff;
   border: 1px solid #fff;
 }
-
 .button {
 	margin-right: 15px;
 	margin-bottom: 15px;
 }
 
+/* Fonts */
 .header-title {
 	margin-bottom : 45px;
 }
-
 nav .logo-title {
   font-family: 'Pacifico', cursive;
   font-size: 25px;
 }
-
 nav {
   font-family: 'Permanent Marker', cursive;
+}
+h1 {
+  font-family: 'Merienda One', cursive;
 }
 
 /*
@@ -197,6 +198,11 @@ select, input {
   color: black;
 }
 
+
+/*
+ * Navbar
+ */
+
 .navbar {
    background-color: #333;
    background: #333;
@@ -209,17 +215,18 @@ select, input {
 .navbar-default .navbar-brand {
   color: #FFF;
 }
-
 .navbar-default .navbar-nav > li > a {
   color: #FFF;
 }
-
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
   color: #777;
   background-color: transparent;
 }
 
 
+/*
+ * Post-it user
+ */
 
 .postit {
 
@@ -264,6 +271,9 @@ transform: rotate(7deg);
   color: #777;
 }
 
+/*
+ * Post-it tasks
+ */
 
 h4 {
   text-transform: uppercase;
