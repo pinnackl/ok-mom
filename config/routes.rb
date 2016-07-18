@@ -3,6 +3,15 @@ Rails.application.routes.draw do
   resources :tasks
   resources :users
   root 'home#index'
+
+  #put '/tasks/:id/done', to: 'tasks#done', as: 'done_task'
+
+  resources :tasks do
+    member do
+      put 'change-status'
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -26,6 +26,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.mother = current_user
+    @task.isDone = false
     
     respond_to do |format|
       if @task.save
@@ -61,6 +62,25 @@ class TasksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def change_status
+    @task = Task.find_by_id(params[:id])
+    if @task.isDone == true
+      status = false
+    else
+      status = true
+    end
+    respond_to do |format|
+      if @task.update_attribute(:isDone, status)
+        format.html { redirect_to @task, notice: 'Task status was successfully updated' }
+        format.json { render :show, status: :ok, location: @task }
+      else
+        format.html { render :show }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
