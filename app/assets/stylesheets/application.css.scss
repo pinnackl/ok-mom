@@ -45,6 +45,9 @@ nav {
 h1 {
   font-family: 'Merienda One', cursive;
 }
+.select {
+  height:100%;
+}
 
 /*
  * Base structure
@@ -121,14 +124,14 @@ body {
   border-bottom-color: #fff;
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .masthead-brand {
     float: left;
   }
   .masthead-nav {
     float: right;
   }
-}
+} */
 
 
 /*
@@ -163,8 +166,8 @@ body {
  * Affix and center
  */
 
-@media (min-width: 768px) {
-  /* Pull out the header and footer */
+/* @media (min-width: 768px) {
+  
   .masthead {
     position:relative;
     top: 0;
@@ -178,11 +181,11 @@ body {
     bottom: 0;
   }
   
-  /* Handle the widths */
+  
   .masthead,
   .mastfoot,
   .cover-container {
-    width: 100%; /* Must be percentage or pixels for horizontal alignment */
+    width: 100%; 
   }
 }
 
@@ -192,7 +195,7 @@ body {
   .cover-container {
     width: 1170px;
   }
-}
+} */
 
 select, input {
   color: black;
@@ -251,6 +254,10 @@ select, input {
   background: -ms-linear-gradient(-45deg, #ffff88 81%,#ffff88 82%,#ffff88 82%,#ffffc6 100%); /* IE10+ */
   background: linear-gradient(135deg, #ffff88 81%,#ffff88 82%,#ffff88 82%,#ffffc6 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', endColorstr='#ffffc6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+  box-shadow: 0px 4px 6px #000;
+-moz-box-shadow: 0px 4px 6px #000;
+-webkit-box-shadow: 0px 4px 6px #000;
 }
 
 .rotate {
@@ -262,12 +269,18 @@ transform: rotate(7deg);
 }
 
 .postit-footer {
+  padding-top: 40px;
   width:100%;
   border-bottom:25x solid #fdfd86;
   font-size: 22px;
 }
 
-.postit-footer a {
+.postit-footer p {
+  display: inline-block;
+  width: 50%;
+}
+
+.postit a {
   color: #777;
 }
 
@@ -282,12 +295,12 @@ h4 {
   margin-top: 20px;
 }
 
-@media (min-width: 1400px) {
+/* @media (min-width: 1400px) {
     .container {
       width: 90% !important;
       max-width: 90% !important;
     }
-}
+} */
 
 ul.card-stack {
     font-family: 'Gloria Hallelujah', cursive;
@@ -308,17 +321,17 @@ ul.card-stack {
     text-align: center;
     color: rgba(0, 0, 0, 0.5);
     font-weight: bold;
-    font-size: 16px;
+    font-size: 30px;
     position: relative;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.1);
     padding: 10px 20px;
-    margin-top: -14px;  
+    margin: -15px 0 15px 0;
 }
 .stack-label:before {
     content: "\00a0";
     width: 20px;
-    font-size: 16px;
+    font-size: 30px;
     padding: 10px 0;
     position: absolute;
     left: -20px;
@@ -328,7 +341,7 @@ ul.card-stack {
 .stack-label:after {
     content: "\00a0";
     width: 20px;
-    font-size: 16px;
+    font-size: 30px;
     padding: 10px 0;
     position: absolute;
     right: -20px;
@@ -370,8 +383,12 @@ ul.card-stack:nth-child(5n) { background-color: #FFCB18; }
   color: white;
 }
 
+.item-last {
+  padding-top: 40px;
+}
+
 .item-new {
-  padding:45px;
+  padding:50px;
 }
 
 #cardStackContainer ul {
@@ -380,4 +397,21 @@ ul.card-stack:nth-child(5n) { background-color: #FFCB18; }
 
 #cardStackContainer ul:hover {
     transform: scale(1.1); 
+}
+
+@media (max-width: 767px) {
+  .nav-icon {
+    display : none;
+  }
+  .nav-text {
+    display : block;
+  }
+}
+@media (min-width: 768px) {
+  .nav-icon {
+    display : block;
+  }
+  .nav-text {
+    display : none;
+  }
 }
