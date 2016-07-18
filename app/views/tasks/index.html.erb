@@ -23,7 +23,7 @@
           </li>
         </ul>
       <% end %>
-      <% if current_user.role == 'mother' %>
+      <% if current_user.role == 'Mother' %>
         <ul id="postit_new" class="card-stack ui-sortable">
           <li class="stack-label">New Task</li>
           <%= link_to new_task_path, title:"New" do %>

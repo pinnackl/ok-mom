@@ -214,7 +214,6 @@ select, input {
           box-shadow: inset 0 0 100px rgba(0,0,0,.5);
 
 }
-
 .navbar-default .navbar-brand {
   color: #FFF;
 }
@@ -226,6 +225,22 @@ select, input {
   background-color: transparent;
 }
 
+@media (max-width: 767px) {
+  .nav-icon {
+    display : none;
+  }
+  .nav-text {
+    display : block;
+  }
+}
+@media (min-width: 768px) {
+  .nav-icon {
+    display : block;
+  }
+  .nav-text {
+    display : none;
+  }
+}
 
 /*
  * Post-it user
@@ -278,6 +293,7 @@ transform: rotate(7deg);
 .postit-footer p {
   display: inline-block;
   width: 50%;
+  margin-bottom: 20px;
 }
 
 .postit a {
@@ -399,19 +415,29 @@ ul.card-stack:nth-child(5n) { background-color: #FFCB18; }
     transform: scale(1.1); 
 }
 
-@media (max-width: 767px) {
-  .nav-icon {
-    display : none;
+/*
+ * Modal
+ */
+
+.modal {
+  color: #777;
+  font-family: 'Gloria Hallelujah', cursive;
+  h4 {
+    color: #777;
   }
-  .nav-text {
-    display : block;
+  .modal-content {
+    background-color: #ffff88;
   }
 }
-@media (min-width: 768px) {
-  .nav-icon {
-    display : block;
-  }
-  .nav-text {
-    display : none;
-  }
+
+.check-text { margin-top: .3em; }
+
+.fa-custom-plus {
+  position: relative;
+  bottom: 32px;
+  left: 22px;
+}
+
+.fa-custom {
+  margin-top: -20px;
 }

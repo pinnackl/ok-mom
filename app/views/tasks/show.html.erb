@@ -44,17 +44,50 @@
     </table>
 
     <div class="postit-footer">
-      <p><%= link_to 'Edit', edit_task_path(@task) %></p><!--
-	--><p>
-			<%= link_to change_status_task_path(@task), method: :put do %>
-				<% if @task.isDone == true %>
-					Undone
-				<% else %>
-					Done
-				<% end %>
+			<% if @task.isDone == true %>
+        <p>
+  				<%= link_to change_status_task_path(@task), method: :put do %>
+            Undone
+          <% end %>
+        </p>
+			<% else %>
+        <p>
+          <%= link_to change_status_task_path(@task), method: :put, title: "Done" do %>
+            <i class="fa fa-check-square-o fa-2x" aria-hidden="true"></i>
+          <% end %>
+        </p><!--
+     --><p>
+          <a data-toggle="modal" data-target="#taskModal" title="Done with proof">
+  				  <span class="fa-stack fa-2x fa-custom">
+              <i class="fa fa-check-square-o fa-stack-1x"></i>
+              <strong class="fa-stack-1x check-text"><i class="fa fa-plus fa-custom-plus" aria-hidden="true"></i></strong>
+            </span>
+          </a>
+        </p>
 			<% end %>
-		</p><!--
-	--><p><%= link_to 'Back', tasks_path %></p>
+      <p><%= link_to 'Edit', edit_task_path(@task) %></p><!--
+   --><p><%= link_to 'Back', tasks_path %></p>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></button>
+        <h3 class="modal-title" id="taskModalLabel">Add proof</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= link_to change_status_task_path(@task), method: :put, class: "btn btn-primary" do %>
+          Done
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
