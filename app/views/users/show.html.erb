@@ -4,7 +4,9 @@
     <p class="stack-label"> <b><%= @user.name %></b> </p>
 
     <table class="table"> 
-      <caption id="notice"><%= notice %></caption>  
+      <% if notice %> 
+        <caption id="notice" class="alert alert-success"><%= notice %></caption>
+      <% end %>  
       <tbody> 
         <tr> 
           <th scope="row">Name</th> <td><%= @user.name %></td> 
@@ -21,7 +23,7 @@
       </tbody> 
     </table>
 
-    <div class="card-stack-container">
+    <!-- <div class="card-stack-container">
       <div id="cardStackContainer">
         <% @user.tasks.where(mother: @user).each do |task| %>
           <ul id="postit_<%= task.id %>" class="card-stack ui-sortable">
@@ -31,11 +33,10 @@
             <li class="item"><%= task.child.name %></li>
           </ul>
         <% end %>
-    </div>
+    </div> -->
 
     <div class="postit-footer">
-      <%= link_to 'Edit', edit_user_path(@user) %> |
-      <%= link_to 'Back', users_path %>
+      <p><%= link_to 'Edit', edit_user_registration_path %></p><p><%= link_to 'Back', users_path %></p>
     </div>
   </div>
 </div>

@@ -47,19 +47,31 @@
 					        </div>
 					        <div id="navbar" class="navbar-collapse collapse">
 					          <ul class="nav navbar-nav">
-					            <li><%= link_to 'Home', root_path %></li>
-					            <li><%= link_to 'Tasks', tasks_path %></li>
+					            <!-- <li><%= link_to 'Home', root_path %></li> -->
+					            <li>
+					            	<%= link_to tasks_path, title: "My Tasks" do %>
+					            		<i class="fa fa-sticky-note-o fa-2x nav-icon" aria-hidden="true"></i><span class="nav-text">Tasks</span>
+					            	<% end %>
+					            </li>
 					          </ul>
 					          <ul class="nav navbar-nav navbar-right">
 					            <% if user_signed_in? %>
 								    <li>
 								    	<%= link_to current_user, title: current_user.username do %>
-								    		<i class="fa fa-user fa-2x" aria-hidden="true"></i>
+								    		<i class="fa fa-user fa-2x nav-icon" aria-hidden="true"></i><span class="nav-text">Profile</span>
 								    	<% end %>
 								    </li>
-								    <li><%= link_to 'Se déconnecter', destroy_user_session_path, method: :delete %></li>
+								    <li>
+								    	<%= link_to destroy_user_session_path, method: :delete, title: "Log out" do %>
+								    		<i class="fa fa-sign-out fa-2x nav-icon" aria-hidden="true"></i><span class="nav-text">Log out</span>
+								    	<% end %>
+								    </li>
 							    <% else %>
-								    <li><%= link_to 'Se connecter', new_user_session_path %></li>
+								    <li>
+								    	<%= link_to new_user_session_path, title: "Sign in" do %>
+								    		<i class="fa fa-sign-in fa-2x nav-icon" aria-hidden="true"></i><span class="nav-text">Sign in</span>
+								    	<% end %>
+								    </li>
 							    <% end %>
 					          </ul>
 					        </div>
@@ -69,8 +81,10 @@
 		          </div>
 
 		          <div class="inner cover">
-		          	<div class="col-sm-offset-1 col-sm-10">
-		            	<%= yield %>
+		          	<div class="col-lg-offset-1 col-lg-10">
+		          		<div class="container" align=center>
+		            		<%= yield %>
+		            	</div>
 		            </div>
 		          </div>
 

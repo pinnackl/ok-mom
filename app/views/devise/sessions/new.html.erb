@@ -1,22 +1,27 @@
-<header class="header-title">
-	<h2>Log in</h2>
-</header>
+<div class="container">
+  <div class="postit">
+    <header class="header-title">
+    	<h2>Log in</h2>
+    </header>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
+      <div class="form-inputs">
+        <%= f.input :email, required: true, autofocus: true %>
+        <%= f.input :password, required: true %>
+        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      </div>
 
-  <div class="form-actions">
-  	<div class="form-group">
-	    <%= button_tag(type: 'submit', class: "button btn btn-default") do %>
-			<i class="fa fa-sign-in" aria-hidden="true"></i> Log In
-		<% end %> <br/>
-	    <%= render "devise/shared/links" %>
-    </div>
+      <div class="form-actions">
+      	<div class="form-group">
+    	    <%= button_tag(type: 'submit', class: "button btn btn-default") do %>
+    			<i class="fa fa-sign-in" aria-hidden="true"></i> Log In
+    		<% end %> <br/>
+    	    <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
 
 

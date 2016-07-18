@@ -1,34 +1,35 @@
-<div class="container" align=center>
   <p id="notice"><%= notice %></p>
 
   <h1>Listing Tasks</h1>
 
   <div class="card-stack-container">
     <div id="cardStackContainer">
-      <% @tasks.each do |task| %>
+      <% @tasks.where(child: current_user).each do |task| %>
         <ul id="postit_<%= task.id %>" class="card-stack ui-sortable">
           <li class="stack-label"><%= task.title %></li>
           <li class="item"><%= task.created_at %></li>
           <li class="item"><%= task.mother.name %></li>
           <li class="item"><%= task.child.name %></li>
-          <br>
-          <li class="item">
+          <li class="item item-last">
             <table class="table">
-              <tbody>
+              <tbody align=center>
                 <td><%= link_to task, title:"Show" do %> <i class="fa fa-eye fa-2x" aria-hidden="true"></i> <% end %></td>
-                <td><%= link_to edit_task_path(task), title:"Edit" do %> <i class="fa fa-pencil fa-2x" aria-hidden="true"></i> <% end %></td>
-                <td><%= link_to task, title:"Delete", method: :delete, data: { confirm: 'Are you sure?' } do %> <i class="fa fa-trash fa-2x" aria-hidden="true"></i> <% end %></td>
+                <% if current_user == task.mother %>
+                  <td><%= link_to edit_task_path(task), title:"Edit" do %> <i class="fa fa-pencil fa-2x" aria-hidden="true"></i> <% end %></td>
+                  <td><%= link_to task, title:"Delete", method: :delete, data: { confirm: 'Are you sure?' } do %> <i class="fa fa-trash fa-2x" aria-hidden="true"></i> <% end %></td>
+                <% end %>
               </tbody>
             </table>
           </li>
         </ul>
       <% end %>
-      <ul id="postit_new" class="card-stack ui-sortable">
-        <li class="stack-label">New Task</li>
-        <%= link_to new_task_path, title:"New" do %>
-          <li class="item-new"><i class="fa fa-plus-square fa-4x" aria-hidden="true"></i></li>
-        <% end %>
-      </ul>
+      <% if current_user.role == 'mother' %>
+        <ul id="postit_new" class="card-stack ui-sortable">
+          <li class="stack-label">New Task</li>
+          <%= link_to new_task_path, title:"New" do %>
+            <li class="item-new"><i class="fa fa-plus-square fa-4x" aria-hidden="true"></i></li>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
   </div>
-</div>

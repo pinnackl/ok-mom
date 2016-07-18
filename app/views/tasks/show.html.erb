@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Title:</strong>
@@ -16,4 +16,45 @@
 </p>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<%= link_to 'Back', tasks_path %>-->
+
+<div class="container rotate" align=center>
+  <div class="postit">
+  
+    <p class="stack-label"> <b><%= @task.title %></b> </p>
+
+    <table class="table">
+      <% if notice %> 
+        <caption id="notice" class="alert alert-success"><%= notice %></caption>
+      <% end %> 
+      <tbody> 
+        <tr> 
+          <th scope="row">Created At</th> <td><%= @task.created_at %></td> 
+        </tr>
+        <tr> 
+          <th scope="row">Mother</th> <td><%= @task.mother.name %></td> 
+        </tr>
+        <tr> 
+          <th scope="row">Child</th> <td><%= @task.child.name %></td> 
+        </tr>
+        <tr> 
+          <th scope="row">Is Done ?</th> <td><%= @task.isDone %></td> 
+        </tr> 
+      </tbody> 
+    </table>
+
+    <div class="postit-footer">
+      <p><%= link_to 'Edit', edit_task_path(@task) %></p><!--
+	--><p>
+			<%= link_to change_status_task_path(@task), method: :put do %>
+				<% if @task.isDone == true %>
+					Undone
+				<% else %>
+					Done
+				<% end %>
+			<% end %>
+		</p><!--
+	--><p><%= link_to 'Back', tasks_path %></p>
+    </div>
+  </div>
+</div>
