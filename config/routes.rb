@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  get 'errors/not_found'
+
+  get 'errors/internal_server_error'
+
   devise_for :users
   resources :tasks
-  resources :users
+  resources :users, only: [:show]
   root 'tasks#index'
 
   put '/tasks/:id', to: 'tasks#update', as: 'update_task'
