@@ -4,7 +4,7 @@
 
   <div class="card-stack-container">
     <div id="cardStackContainer">
-      <% @tasks.where(child: current_user).each do |task| %>
+      <% @tasks.each do |task| %>
         <ul id="postit_<%= task.id %>" class="card-stack ui-sortable">
           <li class="stack-label"><%= task.title %></li>
           <li class="item"><%= task.created_at %></li>

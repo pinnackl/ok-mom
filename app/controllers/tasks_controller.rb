@@ -1,10 +1,17 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-
+  # before_action :authenticate_user!
+  
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    if current_user.role == "Mother"
+      @tasks = Task.where(mother: current_user).all
+    elsif current_user.role == "Child"
+      @tasks = Task.where(child: current_user).all
+    else
+      @tasks = Task.all
+    end
   end
 
   # GET /tasks/1
@@ -90,6 +97,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:title, :isDone, :mother_id, :child_id)
+      params.require(:task).permit(:title, :isDone, :mother_id, :child_id, :description, :answer)
     end
 end
