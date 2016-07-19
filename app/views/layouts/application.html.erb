@@ -11,16 +11,10 @@
     	<title>Ok Mom</title>
 		
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-		<% unless Rails.application.assets.find_asset("#{controller_name}.css").nil? %>
-			<%= stylesheet_link_tag controller_name, media: 'all', 'data-turbolinks-track' => true %>
-		<% end %>
+		
 		
 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-		<% unless Rails.application.assets.find_asset("#{controller_name}.js").nil? %>
-			<%= javascript_include_tag controller_name, media: 'all', 'data-turbolinks-track' => true %>
-		<% end %>
-
-		<!-- <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet"> -->
+		
 
 		<%= csrf_meta_tags %>
 		</head>

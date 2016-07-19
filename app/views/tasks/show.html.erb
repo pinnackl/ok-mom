@@ -1,26 +1,8 @@
-<!-- <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @task.title %>
-</p>
-
-<p>
-  <strong>Isdone:</strong>
-  <%= @task.isDone %>
-</p>
-
-<p>
-  <strong>Created at:</strong>
-  <%= @task.created_at %>
-</p>
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>-->
-
 <div class="container rotate" align=center>
-  <div class="postit <%= 'sample' if @task.isDone == true %>">
-  
+  <div class="postit">
+    <% if @task.isDone == true %>
+     <div class="sample"></div>
+    <% end %>
     <p class="stack-label"> <b><%= @task.title %></b> </p>
 
     <% if notice %> 
@@ -68,8 +50,25 @@
           </a>
         </p>
 			<% end %>
+      <% if @task.answer? or @task.proof.exists? %>
+        <div class="card-stack-container">
+          <div id="cardStackContainer">
+            <ul id="postit_answer" class="card-stack ui-sortable">
+              <li class="stack-label">Answer</li>
+              <li class="item"><%= @task.answer %></li>
+            </ul>
+            <ul id="postit_answer" class="card-stack ui-sortable" data-toggle="modal" data-target="#taskProofModal">
+              <li class="stack-label">Proof</li>
+              <li class="item"><%= image_tag @task.proof.url(:medium) %></li>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+      
       <div class="postit-buttons">
-        <p><%= link_to 'Edit', edit_task_path(@task) %></p><!--
+      <% if current_user.role == "Mother" %>
+        <p><%= link_to 'Edit', edit_task_path(@task)%></p><!--
+   --><% end %><!--
      --><p><%= link_to 'Back', tasks_path %></p>
       </div>
     </div>
@@ -86,13 +85,33 @@
       </div>
       <%= simple_form_for @task, url: update_task_path, method: :put do |f| %>
         <div class="modal-body">
-          <%= f.input :answer, autofocus: true %>
+          <%= f.input :answer, autofocus: true, label: "Written proof" %>
+          <span>AND/OR</span><br/>
+          <%= f.input :proof, as: :file, label: "Image proof" %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <%= f.submit 'Done', class: 'button btn btn-primary' %>
         </div>
       <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="taskProofModal" tabindex="-1" role="dialog" aria-labelledby="taskProofModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></button>
+        <h3 class="modal-title" id="taskProofModalLabel">Proof</h3>
+      </div>
+      <div class="modal-body">
+        <%= image_tag @task.proof.url %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= link_to "Download", @task.proof.url(:original, false), class: "button btn btn-primary" %>
+      </div>
     </div>
   </div>
 </div>

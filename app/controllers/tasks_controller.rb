@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :change_status]
   # before_action :authenticate_user!
   
   # GET /tasks
@@ -51,6 +51,10 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
+        if @task.answer? or @task.proof.exists?
+          @task.isDone = true
+          @task.save
+        end
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @task }
       else
@@ -71,14 +75,15 @@ class TasksController < ApplicationController
   end
 
   def change_status
-    @task = Task.find_by_id(params[:id])
     if @task.isDone == true
-      status = false
+      @task.isDone = false
+      @task.answer = nil
+      @task.proof = nil
     else
-      status = true
+      @task.isDone = true
     end
     respond_to do |format|
-      if @task.update_attribute(:isDone, status)
+      if @task.save
         format.html { redirect_to @task, notice: 'Task status was successfully updated' }
         format.json { render :show, status: :ok, location: @task }
       else
@@ -97,6 +102,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:title, :isDone, :mother_id, :child_id, :description, :answer)
+      params.require(:task).permit(:title, :isDone, :mother_id, :child_id, :description, :answer, :proof)
     end
 end

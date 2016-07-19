@@ -451,12 +451,12 @@ ul.card-stack:nth-child(5n) { background-color: #FFCB18; }
   margin-top: -20px;
 }
 
-.sample:after
+.sample:before
 {
     content:"DONE";
     position:absolute;
-    bottom:200px;
-    right:10px;
+    top:110px;
+    right:50px;
     z-index:1;
     font-family: 'Finger Paint', cursive;
     -webkit-transform: rotate(-45deg); /* Safari */

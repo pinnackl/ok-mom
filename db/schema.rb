@@ -11,17 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160719143431) do
+ActiveRecord::Schema.define(version: 20160719200654) do
 
   create_table "tasks", force: :cascade do |t|
     t.string   "title"
     t.boolean  "isDone"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "mother_id"
     t.integer  "child_id"
     t.text     "description"
     t.string   "answer"
+    t.string   "proof_file_name"
+    t.string   "proof_content_type"
+    t.integer  "proof_file_size"
+    t.datetime "proof_updated_at"
   end
 
   add_index "tasks", ["child_id"], name: "index_tasks_on_child_id"
