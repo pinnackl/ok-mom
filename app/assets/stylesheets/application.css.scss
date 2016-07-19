@@ -4,7 +4,7 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-@import 'https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Merienda+One|Pacifico|Permanent+Marker';
+@import 'https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Merienda+One|Pacifico|Permanent+Marker|Finger+Paint';
 
 /*
  * Globals
@@ -291,6 +291,11 @@ transform: rotate(7deg);
 }
 
 .postit-footer p {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.postit-buttons p {
   display: inline-block;
   width: 50%;
   margin-bottom: 20px;
@@ -298,6 +303,10 @@ transform: rotate(7deg);
 
 .postit a {
   color: #777;
+}
+
+.postit-description {
+  margin-bottom: 30px;
 }
 
 /*
@@ -440,4 +449,31 @@ ul.card-stack:nth-child(5n) { background-color: #FFCB18; }
 
 .fa-custom {
   margin-top: -20px;
+}
+
+.sample:after
+{
+    content:"DONE";
+    position:absolute;
+    bottom:200px;
+    right:10px;
+    z-index:1;
+    font-family: 'Finger Paint', cursive;
+    -webkit-transform: rotate(-45deg); /* Safari */
+    -moz-transform: rotate(-45deg); /* Firefox */
+    -ms-transform: rotate(-45deg); /* IE */
+    -o-transform: rotate(-45deg); /* Opera */
+    transform: rotate(-45deg);
+    font-size:100px;
+    color:#c00;
+    background:#fff;
+    border:solid 4px #c00;
+    padding:5px;
+    border-radius:5px;
+    zoom:1;
+    filter:alpha(opacity=20);
+    opacity:0.6;
+    -webkit-text-shadow: 0 0 2px #c00;
+    text-shadow: 0 0 2px #c00;
+    box-shadow: 0 0 2px #c00;
 }

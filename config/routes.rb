@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users
   root 'tasks#index'
 
-  #put '/tasks/:id/done', to: 'tasks#done', as: 'done_task'
+  put '/tasks/:id', to: 'tasks#update', as: 'update_task'
 
   resources :tasks do
     member do
